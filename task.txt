@@ -1,0 +1,4 @@
+place drawings of landmarks in findposition.py by using draw as bool and setting it as true
+place drawings of connections in handtrackingmodule.py by using draw as bool and setting it as true
+use the value of landmarks to calculate distance and the finger position in finddistance.py and fingersup.py
+use the distance of finger tips and convert it into percentage for brigthnress and volume control
