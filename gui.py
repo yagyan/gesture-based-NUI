@@ -181,5 +181,4 @@ APPLY_button = Button(window,
                       borderwidth=2
                       )
 APPLY_button.grid(row=15, column=6, pady=20)
-print(dominant)
 window.mainloop()
