@@ -5,9 +5,9 @@ from tkinter import ttk
 window = Tk()  # root widget
 
 # GUI size
-window.geometry("740x400")
-window.minsize(600, 300)
-window.maxsize(740, 400)
+window.geometry("720x480")
+window.minsize(720,480)
+window.maxsize(720,480)
 
 # GUI title
 window.title("Hand Gesture based Natural User Interface")
