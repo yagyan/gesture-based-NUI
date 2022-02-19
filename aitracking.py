@@ -113,7 +113,7 @@ while True:
                 cv2.circle(img, (x1, y1), 15, (255, 0, 255), cv2.FILLED)
                 plocX, plocY = clocX, clocY
 
-            # 8. Both Index and middle fingers are up : left Clicking Mode
+            # 5. Both Index and middle fingers are up : left Clicking Mode
             if left == "Enable" and label == dominant and fingers[1] == 1 and fingers[2] == 1 and fingers[3] == 0 and fingers[4] == 0 and \
                     fingers[0] == value:
                 # 9. Find distance between fingers
@@ -171,12 +171,6 @@ while True:
                     cv2.rectangle(img, (50, int(bBar)), (85, 400), (255, 0, 0), cv2.FILLED)
                     cv2.putText(img, f'{int(bPer)} %', (40, 450), cv2.FONT_HERSHEY_COMPLEX, 1, (255, 0, 0), 3)
 
-            if label == dominant and fingers[0] == value and fingers[1] == 1 and fingers[2] == 1 and fingers[3] == 1 and \
-                    fingers[4] == 1:
-                keyboard.press(Key.ctrl)
-                keyboard.press('a')
-                keyboard.release(Key.ctrl)
-                keyboard.release('a')
 
     # cv2.rectangle(img, (50, 150), (85, 400), (255, 0, 0), 3)
 
