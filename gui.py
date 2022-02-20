@@ -1,13 +1,12 @@
 from tkinter import *
 from tkinter import ttk
 
-
 window = Tk()  # root widget
 
 # GUI size
 window.geometry("720x480")
-window.minsize(720,480)
-window.maxsize(720,480)
+window.minsize(720, 480)
+window.maxsize(720, 480)
 
 # GUI title
 window.title("Hand Gesture based Natural User Interface")
@@ -21,8 +20,8 @@ right = ''
 left = ''
 volume = ''
 brightness = ''
-cancel = False
 movement = ''
+cancel = False
 
 
 def okButton():
@@ -32,7 +31,7 @@ def okButton():
     left = myLeft.get()
     volume = myVolume.get()
     brightness = myBrightness.get()
-    movement = mymouse.get()
+    movement = myMouse.get()
     window.destroy()
 
 
@@ -49,7 +48,7 @@ def applyButton():
     left = myLeft.get()
     volume = myVolume.get()
     brightness = myBrightness.get()
-    movement = mymouse.get()
+    movement = myMouse.get()
 
 
 options = ["Right", "Left"]
@@ -98,19 +97,19 @@ myLeft.current(0)
 myLeft.grid(row=2, column=2, pady=20)
 
 mouse_movement_label = Label(window,
-                         text="Mouse Movement :",
-                         font=('Helvetica',
-                               10
-                               ),
-                         )
+                             text="Mouse Movement :",
+                             font=('Helvetica',
+                                   10
+                                   ),
+                             )
 
 mouse_movement_label.grid(row=1,
-                      column=5,
-                      )
+                          column=5,
+                          )
 
-mymouse = ttk.Combobox(window, value=EorD, width=12)
-mymouse.current(0)
-mymouse.grid(row=1, column=6, pady=20)
+myMouse = ttk.Combobox(window, value=EorD, width=12)
+myMouse.current(0)
+myMouse.grid(row=1, column=6, pady=20)
 
 right_click_label = Label(window,
                           text="Right Click :",
@@ -181,5 +180,4 @@ APPLY_button = Button(window,
                       borderwidth=2
                       )
 APPLY_button.grid(row=15, column=6, pady=20)
-print(dominant)
 window.mainloop()
