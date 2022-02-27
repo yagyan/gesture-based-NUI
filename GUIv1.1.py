@@ -3,10 +3,21 @@ from tkinter import ttk
 
 window = Tk()  # root widget
 
+screen_width = window.winfo_screenwidth()
+screen_height = window.winfo_screenheight()
+
+x = 2.276666667
+y = 2.075675676
+inc = 1.364594595
+
+sw_wd = int(screen_width/x) + 1
+sw_ht = int(screen_height/y) + 1
+inc_ht = int(sw_ht * inc) + 1
+
 # GUI size
-window.geometry("600x370")
-window.minsize(600, 370)
-window.maxsize(600, 370)
+window.geometry("%dx%d" % (sw_wd, sw_ht))
+window.minsize(sw_wd, sw_ht)
+window.maxsize(sw_wd, sw_ht)
 
 # GUI title
 window.title("Hand Gesture based Natural User Interface")
@@ -22,18 +33,16 @@ left = ''
 volume = ''
 brightness = ''
 movement = ''
-drag = ''
 cancel = False
 
 def okButton():
-    global dominant, right, left, volume, brightness, movement, drag
+    global dominant, right, left, volume, brightness, movement
     dominant = myDomi.get()
     right = myRight.get()
     left = myLeft.get()
     volume = myVolume.get()
     brightness = myBrightness.get()
     movement = myMouse.get()
-    drag = myDrag.get()
     window.destroy()
 
 
@@ -44,21 +53,20 @@ def cancelButton():
 
 
 def applyButton():
-    global dominant, right, left, volume, brightness, movement, drag
+    global dominant, right, left, volume, brightness, movement
     dominant = myDomi.get()
     right = myRight.get()
     left = myLeft.get()
     volume = myVolume.get()
     brightness = myBrightness.get()
     movement = myMouse.get()
-    drag = myDrag.get()
 
     if dominant == "Right":
-        status_r = f'''\nLeft Click = {left}\nRight Click = {right}\nMouse Movement = {movement}\nDrag and Drop ={drag}\n'''
-        status_l = f'''\n\nVolume Control = {volume}\nBrightness Control = {brightness}\n\n'''
+        status_r = f'''\nLeft Click = {left}\nRight Click = {right}\nMouse Movement = {movement}\n'''
+        status_l = f'''\nVolume Control = {volume}\nBrightness Control = {brightness}\n\n'''
     else:
-        status_l = f'''\nLeft Click = {left}\nRight Click = {right}\nMouse Movement = {movement}\nDrag and Drop ={drag}\n'''
-        status_r = f'''\n\nVolume Control = {volume}\nBrightness Control = {brightness}\n\n'''
+        status_l = f'''\nLeft Click = {left}\nRight Click = {right}\nMouse Movement = {movement}\n'''
+        status_r = f'''\nVolume Control = {volume}\nBrightness Control = {brightness}\n\n'''
 
     right_status = LabelFrame(info,
                               text="Right Hand",
@@ -90,8 +98,8 @@ def applyButton():
                        )
     op_Label_2.grid()
 
-    window.geometry("600x516")
-    window.maxsize(600, 516)
+    window.geometry("%dx%d" % (sw_wd, inc_ht))
+    window.maxsize(sw_wd, inc_ht)
 
 
 # Dropdown Options
@@ -146,22 +154,6 @@ myMouse = ttk.Combobox(window, state="readonly", value=EorD, width=12)
 myMouse.current(0)
 myMouse.grid(row=2, column=2, pady=20)
 
-# Drag and Drop
-drag_n_drop_label = Label(window,
-                          text="Drag and Drop :",
-                          font=('Helvetica',
-                                10
-                                )
-                          )
-
-drag_n_drop_label.grid(row=2,
-                       column=5,
-                       )
-
-myDrag = ttk.Combobox(window, state="readonly", value=EorD, width=12)
-myDrag.current(0)
-myDrag.grid(row=2, column=6, pady=20)
-
 # Left Click
 left_click_label = Label(window,
                          text="Left Click :",
@@ -186,13 +178,13 @@ volume_label = Label(window,
                            ),
                      )
 
-volume_label.grid(row=3,
+volume_label.grid(row=2,
                   column=5,
                   )
 
 myVolume = ttk.Combobox(window, state="readonly", value=EorD, width=12)
 myVolume.current(0)
-myVolume.grid(row=3, column=6, pady=20)
+myVolume.grid(row=2, column=6, pady=20)
 
 # Right Click
 right_click_label = Label(window,
@@ -218,13 +210,13 @@ brightness_label = Label(window,
                                )
                          )
 
-brightness_label.grid(row=4,
+brightness_label.grid(row=3,
                       column=5,
                       )
 
 myBrightness = ttk.Combobox(window, state="readonly", value=EorD, width=12)
 myBrightness.current(0)
-myBrightness.grid(row=4, column=6, pady=20)
+myBrightness.grid(row=3, column=6, pady=20)
 
 # BUTTONS
 OK_button = Button(window,
