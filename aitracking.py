@@ -13,7 +13,7 @@ import screen_brightness_control as sbc
 import findDistance as FD
 import time
 from pynput.keyboard import Key, Controller
-import gui
+import guiv1
 
 keyboard = Controller()
 ##########################
@@ -46,13 +46,13 @@ volBar = 400
 volPer = 0
 area = 0
 colorVol = (255, 0, 0)
-dominant = gui.dominant
-left = gui.left
-right = gui.right
-Evol = gui.volume
-Ebri = gui.brightness
-cancel = gui.cancel
-movement= gui.movement
+dominant = guiv1.dominant
+left = guiv1.left
+right = guiv1.right
+Evol = guiv1.volume
+Ebri = guiv1.brightness
+cancel = guiv1.cancel
+movement= guiv1.movement
 value = 1
 flag = "00"
 f= 0
@@ -126,12 +126,12 @@ while True:
                                15, (0, 255, 0), cv2.FILLED)
                     pyautogui.click(button='left')
 
-            #         right click
+            #right click gesture
             if right == 'Enable' and label == dominant and fingers[1] == 1 and fingers[2] == 0 and fingers[3] == 0 and fingers[4] == 0 and \
                     fingers[0] != value and f == 0:
                 pyautogui.click(button='right')
                 f = 1
-
+            #volume gesture
             if Evol == "Enable" and label != dominant and fingers[0] == value and fingers[1] == 1 and fingers[2] == 0 and fingers[3] == 0 and \
                     fingers[4] == 0:
                 # Filter based on size

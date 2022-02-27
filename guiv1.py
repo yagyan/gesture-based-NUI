@@ -3,21 +3,10 @@ from tkinter import ttk
 
 window = Tk()  # root widget
 
-screen_width = window.winfo_screenwidth()
-screen_height = window.winfo_screenheight()
-
-x = 2.276666667
-y = 2.075675676
-inc = 1.364594595
-
-sw_wd = int(screen_width/x) + 1
-sw_ht = int(screen_height/y) + 1
-inc_ht = int(sw_ht * inc) + 1
-
 # GUI size
-window.geometry("%dx%d" % (sw_wd, sw_ht))
-window.minsize(sw_wd, sw_ht)
-window.maxsize(sw_wd, sw_ht)
+window.geometry("720x480")
+window.minsize(600, 370)
+window.maxsize(720, 600 )
 
 # GUI title
 window.title("Hand Gesture based Natural User Interface")
@@ -97,9 +86,8 @@ def applyButton():
                        text=status_l,
                        )
     op_Label_2.grid()
-
-    window.geometry("%dx%d" % (sw_wd, inc_ht))
-    window.maxsize(sw_wd, inc_ht)
+    window.geometry("720x600")
+    window.maxsize(720, 600)
 
 
 # Dropdown Options
@@ -178,13 +166,13 @@ volume_label = Label(window,
                            ),
                      )
 
-volume_label.grid(row=2,
+volume_label.grid(row=3,
                   column=5,
                   )
 
 myVolume = ttk.Combobox(window, state="readonly", value=EorD, width=12)
 myVolume.current(0)
-myVolume.grid(row=2, column=6, pady=20)
+myVolume.grid(row=3, column=6, pady=20)
 
 # Right Click
 right_click_label = Label(window,
@@ -210,13 +198,13 @@ brightness_label = Label(window,
                                )
                          )
 
-brightness_label.grid(row=3,
+brightness_label.grid(row=4,
                       column=5,
                       )
 
 myBrightness = ttk.Combobox(window, state="readonly", value=EorD, width=12)
 myBrightness.current(0)
-myBrightness.grid(row=3, column=6, pady=20)
+myBrightness.grid(row=4, column=6, pady=20)
 
 # BUTTONS
 OK_button = Button(window,
